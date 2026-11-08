@@ -14,24 +14,27 @@ Variables de entorno
 - Crea un .env y reemplaza la informacion de .env.example (.env nunca se sube a Git (está en .gitignore) solo .env.example queda como plantilla.)
 - Define una contraseña segura para SQL Server (mayúsculas, minúsculas, números y un símbolo).
 
-# Primera vez
+### Primera vez
 
-1.- Levanta solo la base de datos:
+1. Levanta solo la base de datos:
 
-- docker compose up -d sqlserver
+   ```bash
+   docker compose up -d sqlserver
+   ```
 
-  2.- Espera unos 20 segundos y conéctate con SSMS:
+2. Espera unos 20 segundos y conéctate con SSMS:
+   - Servidor: `localhost,1434`
+   - Autenticación: SQL Server Authentication
+   - Usuario: `sa`
+   - Contraseña: la de tu `.env`
 
-- Servidor: localhost,1434
-- Autenticación: SQL Server Authentication
-- Usuario: sa
-- Contraseña: la de tu .env
+3. Ejecuta `database/TiendaHYM_docker.sql`. Crea la base `TiendaHYM`, sus tablas y los datos de ejemplo.
 
-  3.- Ejecuta la BD de database/TiendaHYM_docker.sql, Crea la base de datos TiendaHYM, sus tablas y los datos de ejemplo.
+4. Levanta el resto de los servicios:
 
-  4.- Levanta el resto de los servicios
-
-- docker compose up -d
+   ```bash
+   docker compose up -d
+   ```
 
 # Comandos útiles
 
