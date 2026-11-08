@@ -1,49 +1,40 @@
 # Tienda H&M
 
-Aplicación Full Stack desarrollada con React, Spring Boot y SQL Server.
+Esta version del proyecto esta usando docker, para ver el archivo original visitar https://github.com/Crls-Guerrero/clone-store-hym
 
-## Requisitos previos
+Ejecución con Docker (recomendada)
 
-- Java 21
-- Maven
-- Node.js 22+
-- SQL Server (local o remoto) + SSMS
+Requisitos previos
 
-## Estructura del proyecto
+- Docker Desktop (en Windows requiere WSL2)
+- SSMS u otro cliente SQL, solo para importar la base la primera vez
 
-Tienda-HyM/
-├── frontend/ # React + Vite + Tailwind
-├── Backend-TiendaHyM/ # Spring Boot + JPA
-├── database/
-│ └── TiendaHYM.sql # Script completo (estructura + datos)
-└── README.md
+Variables de entorno
 
-## Configuración de la base de datos
+- Crea un .env y reemplaza la informacion de .env.example (.env nunca se sube a Git (está en .gitignore) solo .env.example queda como plantilla.)
+- Define una contraseña segura para SQL Server (mayúsculas, minúsculas, números y un símbolo).
 
-1. Abre SSMS y ejecuta el script `database/TiendaHYM.sql` — crea la base `TiendaHYM`, sus tablas, relaciones y datos de ejemplo.
+# Primera vez
 
-## Variables de entorno (backend)
+1.- Levanta solo la base de datos:
 
-El backend no usa credenciales hardcodeadas. Antes de correrlo:
+- docker compose up -d sqlserver
 
-1. Copia `Backend-TiendaHyM/.env.example` como `Backend-TiendaHyM/.env`
-2. Reemplaza los valores con tu configuración local de SQL Server:
+  2.- Espera unos 20 segundos y conéctate con SSMS:
 
-El `.env` se lee automáticamente gracias a la dependencia `spring-dotenv` (ver `pom.xml`). `.env` nunca se sube a Git (está en `.gitignore`); solo `.env.example` queda como plantilla.
+- Servidor: localhost,1434
+- Autenticación: SQL Server Authentication
+- Usuario: sa
+- Contraseña: la de tu .env
 
-## Frontend
+  3.- Ejecuta la BD de database/TiendaHYM_docker.sql, Crea la base de datos TiendaHYM, sus tablas y los datos de ejemplo.
 
-```bash
-cd frontend
-npm install
-npm run dev
-servidor: http://localhost:5173
-```
+  4.- Levanta el resto de los servicios
 
-## Backend
+- docker compose up -d
 
-```bash
-cd backend-tiendahym
-mvn spring-boot:run
-servidor: http://localhost:8080
-```
+# Comandos útiles
+
+docker compose ps (estado de los servicios)
+docker compose logs backend (logs del backend)
+docker compose up -d --build backend (reconstruir el backend tras cambiar código)
