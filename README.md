@@ -4,12 +4,12 @@ Esta version del proyecto esta usando docker, para ver el archivo original visit
 
 Ejecución con Docker (recomendada)
 
-Requisitos previos
+Requisitos previos:
 
 - Docker Desktop (en Windows requiere WSL2)
 - SSMS u otro cliente SQL, solo para importar la base la primera vez
 
-Variables de entorno
+Variables de entorno:
 
 - Crea un .env y reemplaza la informacion de .env.example (.env nunca se sube a Git (está en .gitignore) solo .env.example queda como plantilla.)
 - Define una contraseña segura para SQL Server (mayúsculas, minúsculas, números y un símbolo).
