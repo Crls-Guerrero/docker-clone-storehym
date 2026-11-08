@@ -36,8 +36,8 @@ Variables de entorno:
    docker compose up -d
    ```
 
-# Comandos útiles
+### Comandos útiles
 
-docker compose ps (estado de los servicios)
-docker compose logs backend (logs del backend)
-docker compose up -d --build backend (reconstruir el backend tras cambiar código)
+- docker compose ps (estado de los servicios)
+- docker compose logs backend (logs del backend)
+- docker compose up -d --build backend (reconstruir el backend tras cambiar código)
